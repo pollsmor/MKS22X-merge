@@ -17,13 +17,16 @@ public class Merge {
     else //odd-sized array
       left = new int[midIdx + 1];
 
-    //split into left and right arrays
-    for (int i = 0; i < data.length; ++i) {
-      if (i < midIdx)
-        left[i] = data[i];
+    //Copy into left array
+    for (int i = 0; i < left.length; ++i)
+      left[i] = data[i];
+
+    for (int i = 0; i < right.length; ++i) {
+      if (data.length % 2 == 0)
+        right[i] = data[i + midIdx];
 
       else
-        right[i - 2] = data[i];
+        right[i] = data[i + midIdx + 1];
     }
 
     System.out.println(Arrays.toString(left));
