@@ -13,26 +13,57 @@ public class Merge {
     if (lo >= hi)
       return;
 
-    int midIdx = data.length / 2;
-    int[] left; //decided that left is always larger
-    int[] right = new int[midIdx];
+    boolean isEven = (hi - lo + 1) % 2 == 0;
+    int midIdx = 0;
+    int leftArrSize = 0;
+    int rightArrSize = 0;
+    if (isEven) {
+      midIdx = (hi + lo) / 2 + 1;
+      leftArrSize = (hi - lo) / 2 + 1;
+      rightArrSize = (hi - lo) / 2 + 1;
+    }
 
-    if (data.length % 2 == 0) //even-sized array
-      left = new int[midIdx];
+    else {
+      midIdx = (hi + lo) / 2;
+      leftArrSize = (hi - lo) / 2;
+      rightArrSize = (hi - lo) / 2;
+    }
 
-    else //odd-sized array
-      left = new int[midIdx + 1];
+    int[] left = new int[leftArrSize]; //decided that left is always larger
+    int[] right = new int[rightArrSize];
 
-    //Copy into left array
-    for (int i = 0; i < left.length; ++i)
-      left[i] = data[i];
+    if (isEven) {
+      for (int i = lo; i < midIdx; ++i) {
+        left[i - lo] = data[i];
+      }
 
-    for (int i = 0; i < right.length; ++i) {
-      if (data.length % 2 == 0) //copy into right if even-sized array
-        right[i] = data[i + midIdx];
+      for (int i = midIdx; i <= hi; ++i) {
+        right[i - midIdx] = data[i];
+      }
 
-      else //copy into right if odd-sized array
-        right[i] = data[i + midIdx + 1];
+      System.out.println(Arrays.toString(left));
+      System.out.println(Arrays.toString(right));
+      System.out.println();
+
+      mergesortH(data, lo, midIdx - 1);
+      mergesortH(data, midIdx, hi);
+    }
+
+    else { //odd-sized array
+      for (int i = lo; i <= midIdx; ++i) {
+        left[i - lo] = data[i];
+      }
+
+      for (int i = midIdx + 1; i <= hi; ++i) {
+        right[i - midIdx - 1] = data[i];
+      }
+
+      System.out.println(Arrays.toString(left));
+      System.out.println(Arrays.toString(right));
+      System.out.println();
+
+      mergesortH(data, lo, midIdx);
+      mergesortH(data, midIdx + 1, hi);
     }
   }
 }
