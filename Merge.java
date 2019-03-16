@@ -26,28 +26,23 @@ public class Merge {
 
     else {
       midIdx = (hi + lo) / 2;
-      leftArrSize = (hi - lo) / 2;
+      leftArrSize = (hi - lo) / 2 + 1;
       rightArrSize = (hi - lo) / 2;
     }
 
     int[] left = new int[leftArrSize]; //decided that left is always larger
     int[] right = new int[rightArrSize];
 
-    if (isEven) {
-      for (int i = lo; i < midIdx; ++i)
-        left[i - lo] = data[i];
+    for (int i = 0; i < left.length; ++i)
+      left[i] = data[i];
 
-      for (int i = midIdx; i <= hi; ++i)
-        right[i - midIdx] = data[i];
-    }
+    if (isEven)
+      for (int i = 0; i < right.length; ++i)
+        right[i] = data[i + midIdx];
 
-    else { //odd-sized array
-      for (int i = lo; i <= midIdx; ++i)
-        left[i - lo] = data[i];
-
-      for (int i = midIdx + 1; i <= hi; ++i)
-        right[i - midIdx - 1] = data[i];
-    }
+    else
+      for (int i = 0; i < right.length; ++i)
+        right[i] = data[i + midIdx + 1];
 
     mergesortH(left, 0, left.length - 1);
     mergesortH(right, 0, right.length - 1);
@@ -73,6 +68,12 @@ public class Merge {
     while (l < left.length) {
       data[i] = left[l];
       ++l;
+      ++i;
+    }
+
+    while (r < right.length) {
+      data[i] = right[r];
+      ++r;
       ++i;
     }
 
