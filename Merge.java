@@ -17,6 +17,7 @@ public class Merge {
     int midIdx = 0;
     int leftArrSize = 0;
     int rightArrSize = 0;
+
     if (isEven) {
       midIdx = (hi + lo) / 2 + 1;
       leftArrSize = (hi - lo) / 2 + 1;
@@ -33,37 +34,48 @@ public class Merge {
     int[] right = new int[rightArrSize];
 
     if (isEven) {
-      for (int i = lo; i < midIdx; ++i) {
+      for (int i = lo; i < midIdx; ++i)
         left[i - lo] = data[i];
-      }
 
-      for (int i = midIdx; i <= hi; ++i) {
+      for (int i = midIdx; i <= hi; ++i)
         right[i - midIdx] = data[i];
-      }
-
-      System.out.println(Arrays.toString(left));
-      System.out.println(Arrays.toString(right));
-      System.out.println();
-
-      mergesortH(data, lo, midIdx - 1);
-      mergesortH(data, midIdx, hi);
     }
 
     else { //odd-sized array
-      for (int i = lo; i <= midIdx; ++i) {
+      for (int i = lo; i <= midIdx; ++i)
         left[i - lo] = data[i];
-      }
 
-      for (int i = midIdx + 1; i <= hi; ++i) {
+      for (int i = midIdx + 1; i <= hi; ++i)
         right[i - midIdx - 1] = data[i];
+    }
+
+    mergesortH(left, 0, left.length - 1);
+    mergesortH(right, 0, right.length - 1);
+
+    int i = 0;
+    int l = 0;
+    int r = 0;
+
+    while (l < left.length && r < right.length) {
+      if (left[l] <= right[r]) {
+        data[i] = left[l];
+        ++l;
       }
 
-      System.out.println(Arrays.toString(left));
-      System.out.println(Arrays.toString(right));
-      System.out.println();
+      else {
+        data[i] = right[r];
+        ++r;
+      }
 
-      mergesortH(data, lo, midIdx);
-      mergesortH(data, midIdx + 1, hi);
+      ++i;
     }
+
+    while (l < left.length) {
+      data[i] = left[l];
+      ++l;
+      ++i;
+    }
+
+    System.out.println(Arrays.toString(data));
   }
 }
