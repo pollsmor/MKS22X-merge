@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Merge {
+  //Wrapper function for mergesortH
   public static void mergesort(int[] data) {
     //Hardcoded case
     if (data.length <= 1)
@@ -10,12 +11,13 @@ public class Merge {
   }
 
   private static void mergesortH(int[] data, int lo, int hi) {
+    //Base case provided by pseudocode in class
     if (lo >= hi)
       return;
 
     boolean isEven = (hi - lo + 1) % 2 == 0;
     int midIdx = 0;
-    int leftArrSize = 0;
+    int leftArrSize = 0; //decided that left is always larger
     int rightArrSize = 0;
 
     if (isEven) {
@@ -27,10 +29,10 @@ public class Merge {
     else {
       midIdx = (hi + lo) / 2;
       leftArrSize = (hi - lo) / 2 + 1;
-      rightArrSize = (hi - lo) / 2;
+      rightArrSize = (hi - lo) / 2; //in an odd-sized array I made the right side always smaller
     }
 
-    int[] left = new int[leftArrSize]; //decided that left is always larger
+    int[] left = new int[leftArrSize];
     int[] right = new int[rightArrSize];
 
     for (int i = 0; i < left.length; ++i)
@@ -47,9 +49,9 @@ public class Merge {
     mergesortH(left, 0, left.length - 1);
     mergesortH(right, 0, right.length - 1);
 
-    int i = 0;
-    int l = 0;
-    int r = 0;
+    int i = 0; //keeps track of index of merged array
+    int l = 0; //index of left array
+    int r = 0; //index of right array
 
     while (l < left.length && r < right.length) {
       if (left[l] <= right[r]) {
@@ -65,6 +67,7 @@ public class Merge {
       ++i;
     }
 
+    //The last two whiles are for anything left behind.
     while (l < left.length) {
       data[i] = left[l];
       ++l;
@@ -76,7 +79,5 @@ public class Merge {
       ++r;
       ++i;
     }
-
-    System.out.println(Arrays.toString(data));
   }
 }
