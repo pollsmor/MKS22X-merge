@@ -26,7 +26,7 @@ public class Merge {
     int rightArrSize = 0;
 
     if (isEven) {
-      midIdx = (hi + lo) / 2 + 1;
+      midIdx = (hi - lo) / 2 + 1;
       leftArrSize = (hi - lo) / 2 + 1;
       rightArrSize = (hi - lo) / 2 + 1;
     }
@@ -95,16 +95,18 @@ public class Merge {
     boolean isEven = (hi - lo + 1) % 2 == 0;
     int midIdx = 0;
 
+    System.out.println(hi);
+    System.out.println(lo);
     if (isEven)
-      midIdx = (hi + lo) / 2 + 1;
+      midIdx = (hi - lo) / 2 + lo; //algorithm to calculate midIdx was faulty
 
     else
-      midIdx = (hi + lo) / 2;
+      midIdx = (hi - lo) / 2 + lo; //same
 
-    mergesortO(temp, data, 0, midIdx);
+    mergesortO(temp, data, lo, midIdx);
     mergesortO(temp, data, midIdx + 1, hi);
 
-    int i = 0; //keeps track of index of merged array
+    int i = lo; //keeps track of index of merged array
     int l = lo; //index of left array
     int r = midIdx + 1; //index of right array
 
