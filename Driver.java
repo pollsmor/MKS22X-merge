@@ -8,5 +8,11 @@ public class Driver {
 
     Merge.mergesort(arr);
     System.out.println();
+
+    Merge.mergesort(arr2);
+    System.out.println();
+
+    Merge.mergesort(arr3);
+    System.out.println();
   }
 }

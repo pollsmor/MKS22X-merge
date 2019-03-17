@@ -95,8 +95,6 @@ public class Merge {
     boolean isEven = (hi - lo + 1) % 2 == 0;
     int midIdx = 0;
 
-    System.out.println(hi);
-    System.out.println(lo);
     if (isEven)
       midIdx = (hi - lo) / 2 + lo; //algorithm to calculate midIdx was faulty
 
