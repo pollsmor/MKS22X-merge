@@ -134,7 +134,5 @@ public class Merge {
       ++r;
       ++i;
     }
-
-    System.out.println(Arrays.toString(data));
   }
 }
