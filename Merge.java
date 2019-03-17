@@ -105,7 +105,7 @@ public class Merge {
     mergesortO(temp, data, midIdx + 1, hi);
 
     int i = 0; //keeps track of index of merged array
-    int l = 0; //index of left array
+    int l = lo; //index of left array
     int r = midIdx + 1; //index of right array
 
     while (l <= midIdx && r <= hi) {
@@ -134,5 +134,7 @@ public class Merge {
       ++r;
       ++i;
     }
+
+    System.out.println(Arrays.toString(data));
   }
 }
