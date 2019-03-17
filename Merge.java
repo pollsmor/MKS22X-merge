@@ -7,6 +7,11 @@ public class Merge {
     if (data.length <= 1)
       return;
 
+    //temp array optimization
+    int[] temp = new int[data.length];
+    for (int i = 0; i < data.length; ++i)
+      temp[i] = data[i];
+
     mergesortH(data, 0, data.length - 1);
   }
 
@@ -80,4 +85,6 @@ public class Merge {
       ++i;
     }
   }
+
+  
 }
