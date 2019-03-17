@@ -123,6 +123,7 @@ public class Merge {
     }
 
     //The last two whiles are for anything left behind.
+    //e.g one side may contain all of the small numbers. Obviously only one will trigger.
     while (l <= midIdx) {
       data[i] = temp[l];
       ++l;
