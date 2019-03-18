@@ -26,7 +26,7 @@ public class Merge {
     int rightArrSize = 0;
 
     if (isEven) {
-      midIdx = (hi - lo) / 2 + 1;
+      midIdx = (hi + lo) / 2 + 1;
       leftArrSize = (hi - lo) / 2 + 1;
       rightArrSize = (hi - lo) / 2 + 1;
     }
