@@ -136,4 +136,20 @@ public class Merge {
       ++i;
     }
   }
+
+  //Insertion sort for further optimization of mergesort
+  private static void insertionsort(int[] data, int lo, int hi) {
+    for (int i = 1; i < data.length; ++i) { //Start at 1 b/c we assume 0 is sorted already
+      int valueAtI = data[i]; //To have something to compare with
+      int j = i - 1; //Start from 1 before <?> so that I can loop backwards from it
+      //System.out.println(Arrays.toString(data)); //for testing purposes
+
+      while (j >= 0 && data[j] > valueAtI) { //Keep shifting left, until I find a pos. where valueAtI is larger than j
+        data[j + 1] = data[j]; //Keep shifting everything to the right
+        --j; //Loop backwards b/c looping forwards will be slower with larger data sets
+      }
+
+      data[j + 1] = valueAtI; //We want data[j] but the while loop does a final --i, we add an index to get j
+    }
+  }
 }
