@@ -7,7 +7,9 @@ public class Driver {
     int[] arr3 = {999, 999, 4, 1, 0, 3, 2, 999, 999, 999};
     int[] arr4 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 10, 304, 49028140};
 
-    Merge.mergesort(arr);
+    //Merge.mergesort(arr);
+    Merge.insertionsort(arr, 0, 7);
+    System.out.println(Arrays.toString(arr));
     System.out.println();
 
     Merge.mergesort(arr2);
