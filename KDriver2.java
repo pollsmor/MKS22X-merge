@@ -53,7 +53,7 @@ public class KDriver2 {
  }
 
  public static void main(String[]args){
-   if(args.length < 2)return;
+   if(args.length < 2) return;
 
    int size =  Integer.parseInt(args[0]);
    int type =   Integer.parseInt(args[1]);
@@ -67,11 +67,7 @@ public class KDriver2 {
     * Test your sort here //yoursort(start);
     * Add code to switch which sort is tested by changing one of the args!
     */
-    if (type == 0)
-      Merge.mergesort(start);
-
-    //if (type == "quick")
-      //Quick.quicksort(start);
+    Merge.mergesort(start);
 
    long elapsedTime = System.currentTimeMillis() - startTime;
    if(Arrays.equals(start,result)){

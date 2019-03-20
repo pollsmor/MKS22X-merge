@@ -88,9 +88,11 @@ public class Merge {
 
   //Optimized merge sort by swapping between 2 arrays
   private static void mergesortO(int[] data, int[] temp, int lo, int hi) {
-    //Base case provided by pseudocode in class
-    if (lo >= hi)
+    //Thanks Ethan for telling us that a good size for insertion is 25 and less!
+    if (hi - lo <= 25) {
+      insertionsort(data, lo, hi);
       return;
+    }
 
     boolean isEven = (hi - lo + 1) % 2 == 0;
     int midIdx = 0;
